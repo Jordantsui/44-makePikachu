@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--移动端适配-->
+  <title>JS Bin</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    *::after{
+      box-sizing: border-box;
+    }
+    *::before{
+      box-sizing: border-box;
+      /*border-box加border不影响宽高*/
+    }
+    body{
+      height: 100vh;
+      /*body占满屏幕*/
+      border: 1px solid green;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #FEE433;
+    }
+    .wrapper{
+      width: 100%;
+      height: 165px;
+      position: relative;
+    }
+    .nose{
+      width: 0px;
+      height: 0px;
+      border-style: solid;
+      border-width: 12px;
+      border-color: black transparent transparent;
+      /*仅让圆形的上1/4是黑色*/
+      border-radius: 11px;
+      /*让鼻子是圆形*/
+      position: absolute;
+      left: 50%;
+      top: 28px;
+      margin-left: -12px;
+      /*或：transform:translateX(-50%);*/
+      /*这一句是为了让鼻子正好水平居中*/
+    }
+    .eye{
+      width: 49px;
+      height: 49px;
+      background: #2E2E2E;
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid #000000;
+    }
+    .eye::before{
+      content: '';
+      display: block;
+      width: 24px;
+      height: 24px;
+      background: white;
+      position: absolute;
+      border-radius: 50%;
+      left: 6px;
+      top:-1px;
+      /*before的位置是相对于eye而言的*/
+      border: 2px solid #000;
+      /*加border，由于宽高（包括border）不变，所以中间的部分实际缩小了*/
+      /*#000是黑色*/
+    }
+    .eye.left{
+      right: 50%;
+      margin-right: 90px;
+      /*方方习惯先把眼睛调到中间，再加margin细调*/
+    }
+    .eye.right{
+      left: 50%;
+      margin-left: 90px;
+    }
+    .face{
+      width: 68px;
+      height: 68px;
+      background: #FC0D1C;
+      border: 2px solid black;
+      border-radius: 50%;
+      position: absolute;
+      top: 85px;
+    }
+    .face.left{
+      right: 50%;
+      margin-right: 116px;
+    }
+    .face.right{
+      left: 50%;
+      margin-left: 116px;
+    }
+    .upperLip{
+      height: 25px;
+      width: 80px;
+      border: 2px solid black;
+      position: absolute;
+      top: 50px;
+      background: #FDE348;
+      /*background设置的与脸一样，就遮住了舌头在两边上嘴唇突出的部分*/
+    }
+    .upperLip.left{
+      right: 50%;
+      border-bottom-left-radius: 40px 25px;
+      /*仅表示左下角有弧度*/
+      border-top: none;
+      border-right: none;
+      transform: rotate(-20deg);
+    }
+    .upperLip.right{
+      left: 50%;
+      border-bottom-right-radius: 40px 25px;
+      border-top: none;
+      border-left: none;
+      transform: rotate(20deg);
+    }
+    .lowerLip-wrapper{
+      bottom: 0;
+      position: absolute;
+      left: 50%;
+      margin-left: -150px;
+      /*border:1px solid black;*/
+      z-index: -1;
+      /*z-index: -1;在still-pikachu这个文件里是有效的，但展示皮卡丘的制作过程时，会出错*/
+      /*此时有两种解决方法，1：去掉这里的z-index: -1;给其他的所有元素加上z-index: 1;*/
+      /*可以用  .wrapper>:not(:last-child){z-index:1;}*/
+      /*2:把.lowerLip-wrapper这个css放在最前面，后面的css会自动覆盖（推荐这一种）*/
+      height: 110px;
+      overflow: hidden;
+      width: 300px;
+    }
+    /*lowerLip-wrapper表示以从舌尖到两个上嘴唇中间顶点的距离为高的矩形*/
+    /*overflow: hidden;将两个上嘴唇中间顶点以上的舌头都遮住了*/
+    .lowerLip{
+      height: 3500px;
+      width: 300px;
+      background: #990513;
+      border-radius: 200px/2000px;
+      /*调后面的那个数，越大，舌头越尖*/
+      border: 2px solid black;
+      position: absolute;
+      bottom: 0;
+      overflow: hidden;
+      /*暗红色是舌头的颜色，鲜红色是after的颜色*/
+    }
+    .lowerLip::after{
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      width: 100px;
+      height: 100px;
+      background: #FC4A62;
+      left: 50%;
+      margin-left: -50px;
+      border-radius: 50px;
+      /*我们其实就是做了一个圆，由于lowerLip是overflow: hidden;*/
+      /*所以在lowerLip范围之外的圆全部隐藏了*/
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="nose"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
+    <div class="face left"></div>
+    <div class="face right"></div>
+    <div class="upperLip left"></div>
+    <div class="upperLip right"></div>
+    <div class="lowerLip-wrapper">
+      <div class="lowerLip"></div>
+    </div>
+
+  </div>
+</body>
+
+</html>
