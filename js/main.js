@@ -4,12 +4,16 @@
     let $button = $(e.currentTarget) // button
     let speed = $button.attr('data-speed')
     //把重要的数据写到data里
+    //jquery.attr(attribute,value)    用于设置该元素的属性
+    //若没有value，用于返回该元素的属性
     $button.addClass('active')
       .siblings('.active').removeClass('active')
+    //jquery.siblings()是个选择器，选择满足条件的兄弟元素（这里去掉.active也可以，但必须保留括号）
     switch(speed){
       case 'slow':
         duration = 100
         break
+        //如果没有break，只能一次调速，不能再改
       case 'normal':
         duration = 50
         break

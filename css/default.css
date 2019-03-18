@@ -16,9 +16,9 @@ body{
 }
 .code-wrapper{
   flex:1;
+  /*code-wrapper和preview-wrapper的flex属性都为1，拉伸属性相同*/
   height: 50%;
   padding: 10px;
-  /*代码行与行之间加间隔*/
 }
 .preview-wrapper{
   flex: 1;
@@ -44,10 +44,11 @@ body{
 .actions>button.active{
   box-shadow: 1px 1px 1px rgba(0,0,0,0.8);
   /*点击按钮之后周围加阴影*/
+  /*水平距离-竖直距离-模糊距离-颜色，一般都不设阴影尺寸*/
 }
 .actions>button:focus{
-  outline: none;
-  /*这一句是去掉默认的（点击按钮周围变黄）效果*/
+  outline: none
+  /*这一句是去掉默认的（点击按钮周围变蓝）效果*/
 }
 .wrapper{
   width: 100%;

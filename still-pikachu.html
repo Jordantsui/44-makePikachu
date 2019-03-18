@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -8,12 +7,14 @@
   <title>JS Bin</title>
   <style>
     *{margin: 0; padding: 0; box-sizing: border-box;}
+    /*content-box（默认值）中的width和height不包括padding和border，仅指内容区*/
+    /*border-box中的width和height包括padding和border*/
     *::after{
       box-sizing: border-box;
     }
     *::before{
       box-sizing: border-box;
-      /*border-box加border不影响宽高*/
+      /*border-box加border不影响宽高，因为宽高已固定，border挤占的是内容的空间*/
     }
     body{
       height: 100vh;
@@ -28,12 +29,16 @@
       width: 100%;
       height: 165px;
       position: relative;
+      /*wrapper指包含皮卡丘五官在内的矩形*/
     }
     .nose{
       width: 0px;
       height: 0px;
       border-style: solid;
       border-width: 12px;
+      /*由于所有元素都是border-box，所以理论上应该不能把width和height设为0的同时*/
+      /*再将border-width设为12px，但是实际上确实可以的。。。*/
+      /*先设置border-width，再将width和height设为0，也可以。。。*/
       border-color: black transparent transparent;
       /*仅让圆形的上1/4是黑色*/
       border-radius: 11px;
