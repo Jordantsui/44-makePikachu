@@ -47,13 +47,13 @@
     //实现的，改掉duration，会影响到setTimeout的调用
   }
   let code = `/*
- * 首先，需要准备皮卡丘的皮
+ * 首先，先画出皮卡丘的脸
  */
 .preview{
   background: #FEE433;
 }
 /*
- * 接下来，画皮卡丘的鼻子
+ * 接下来，是鼻子
  */
 .nose{
   width: 0px;
@@ -68,7 +68,7 @@
   margin-left: -12px;
 }
 /*
- * 接下来，画皮卡丘的眼睛
+ * 然后，画眼睛
  */
 .eye{
   width: 49px;
@@ -79,7 +79,7 @@
   border: 2px solid #000000;
 }
 /*
- * 眼睛里面的珠子
+ * 眼珠子
  */
 .eye::before{
   content: '';
@@ -94,21 +94,21 @@
   border: 2px solid #000;
 }
 /*
- * 左眼在左边（废话）
+ * 左眼
  */
 .eye.left{
   right: 50%;
   margin-right: 90px;
 }
 /*
- * 右眼在右边（废话）
+ * 右眼在右边
  */
 .eye.right{
   left: 50%;
   margin-left: 90px;
 }
 /*
- * 然后，画皮卡丘的脸
+ * 画脸蛋
  */
 .face{
   width: 68px;
@@ -120,7 +120,7 @@
   top: 85px;
 }
 /*
- * 将脸放到正确的位置
+ * 将脸蛋放到正确的位置
  */
 .face.left{
   right: 50%;
@@ -178,7 +178,7 @@
   overflow: hidden;
 }
 /*
- * 小舌头
+ * 舌头
  */
 .lowerLip::after{
   content: '';
@@ -192,7 +192,7 @@
   border-radius: 50px;
 }
 /*
- * 好了，这只皮卡丘送给你
+ * 皮卡丘画好了
  */
 `
   writeCode('',code)
